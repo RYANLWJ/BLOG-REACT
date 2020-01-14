@@ -1,7 +1,7 @@
 import axios from 'axios';
-import store from '../store';
+// import store from '../store';
 import Cookie from '../utils/cookie.js';
-import { Message } from 'view-design';
+// import { Message } from 'view-design';
 
 let baseURLStr = 'http://45.77.254.7:8888/';
 let instance = axios.create({
@@ -24,9 +24,9 @@ instance.interceptors.request.use(
       config.headers['Content-Type'] ='application/json;charset=UTF-8'
     }
     // if(config.url)
-    if (store.state.token || Cookie.getAttribute('token')){
-      config.headers.authorization = store.state.token;
-    }
+    // if (store.state.token || Cookie.getAttribute('token')){
+    //   config.headers.authorization = store.state.token;
+    // }
       
     return config;
   },
@@ -42,14 +42,14 @@ instance.interceptors.response.use(
     if (response.data.token) {
       const { token } = response.data;
       Cookie.setAttribute('token', token, 30);
-      store.commit('SET_TOKEN', token);
+      // store.commit('SET_TOKEN', token);
     }
     return response;
   },
   err => {
     // console.log(err.response)
 
-    Message.error(err.response.data.message);
+    // Message.error(err.response.data.message);
     return Promise.reject(err); // 返回接口返回的错误信息
   }
 );
