@@ -8,6 +8,7 @@ import './index.css';
 import './utils/common.css';
 import App from './App';
 import repo from './pages/repo/repo';
+import signIn from './pages/signIn/signIn';
 import * as serviceWorker from './serviceWorker';
 import 'lib-flexible';
 
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Provider store={store}>
         <Route path="/home" exact component={App} />
         <Route path="/repo" exact component={repo} />
+        <Route path="/signIn" exact component={signIn} />
       </Provider>
     </Switch>
   </Router>,
