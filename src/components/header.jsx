@@ -1,14 +1,23 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      bool: true
-    };
-  }
-
+export class Header extends Component {
   render() {
-    return <h1>111222</h1>;
+    return (
+      <div>
+        fsdfdsf 
+      </div>
+    )
   }
 }
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
+

@@ -1,30 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Button from '@material-ui/core/Button';
-import Header from './components/header';
+import React, { useState, useEffect, useReducer } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Button from "@material-ui/core/Button";
+import Header from "./components/header";
 function App() {
-  return (
+  //初始state
+  const [state, setState] = useState({ text: "hi , what's up , bro !" });
 
+// 类似componentDidMount 和 componentDidUpdate:
+  useEffect(() => {
+    setTimeout(() => setState(({text})=>({text:text+"hey hey hey!!!" })), 2000);
+  },[]);
+  return (
     <div className="App">
       <Header></Header>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <Button variant="contained" color="primary">
-      Hello World
-    </Button>
+      <div>{state.text}</div>
+  
     </div>
   );
 }
