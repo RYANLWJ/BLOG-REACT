@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { Component } from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -46,18 +47,25 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignIn() {
-  const classes = useStyles();
+export default class SignIn extends Component {
 
-  return (
-    <Container component="main" maxWidth="xs">
+  constructor(props) {
+    super(props);
+    this.state = {
+      classes: useStyles
+    };
+  }
+ 
+  render(){
+     return (
+      <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}></Avatar>
+      <div className={this.state.classes.paper}>
+        <Avatar className={this.state.classes.avatar}></Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={this.state.classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -90,7 +98,7 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            className={this.state.classes.submit}
           >
             Sign In
           </Button>
@@ -111,6 +119,8 @@ export default function SignIn() {
       <Box mt={8}>
         <Copyright />
       </Box>
-    </Container>
+      </Container >
   );
+  }
+ 
 }
