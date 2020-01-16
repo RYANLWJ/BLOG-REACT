@@ -1,5 +1,5 @@
 /**
- * 技术栈 react | hooks | redux | axios拦截器 | material-ui | antd-mobile
+ * 技术栈 react | hooks | redux | axios拦截器 | material-ui | antd-mobile | less
  */
 import React from "react";
 import ReactDOM from "react-dom";

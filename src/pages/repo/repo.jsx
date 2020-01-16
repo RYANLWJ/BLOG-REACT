@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../../redux/actions/repo";
+import "./repo.scss";
 
 class Repo extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+
 
   render() {
-    return this.props.list.map(item => <div>${item.id}</div>);
+    return (
+      <div id="repo">
+        {this.props.list.map(item => (
+          <div className="text">{item.id}</div>
+        ))}
+      </div>
+    );
   }
 
   componentDidMount() {
