@@ -1,126 +1,69 @@
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import './signIn.less'
 
-import React, { Component } from "react";
-import Avatar from '@material-ui/core/Avatar';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles(theme => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center'
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
-  },
-  form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1)
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2)
-  }
-}));
-
-export default class SignIn extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      classes: useStyles
-    };
-  }
- 
-  render(){
-     return (
-      <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={this.state.classes.paper}>
-        <Avatar className={this.state.classes.avatar}></Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
-        </Typography>
-        <form className={this.state.classes.form} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            autoFocus
-        
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
+export class signIn extends Component {
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  };
+  render() {
+    const { getFieldDecorator } = this.props.form;
+    return (
+      <Form onSubmit={this.handleSubmit} className="login-form">
+      <Form.Item>
+        {getFieldDecorator('username', {
+          rules: [{ required: true, message: 'Please input your username!' }],
+        })(
+          <Input
+            prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+            placeholder="Username"
+          />,
+        )}
+      </Form.Item>
+      <Form.Item>
+        {getFieldDecorator('password', {
+          rules: [{ required: true, message: 'Please input your Password!' }],
+        })(
+          <Input
+            prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
-            id="password"
-            autoComplete="current-password"
-          />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={this.state.classes.submit}
-          >
-            Sign In
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
-      </Container >
-  );
+            placeholder="Password"
+          />,
+        )}
+      </Form.Item>
+      <Form.Item>
+        {getFieldDecorator('remember', {
+          valuePropName: 'checked',
+          initialValue: true,
+        })(<Checkbox>Remember me</Checkbox>)}
+        <a className="login-form-forgot" href="">
+          Forgot password
+        </a>
+        <Button type="primary" htmlType="submit" className="login-form-button">
+          Log in
+        </Button>
+        Or <a href="">register now!</a>
+      </Form.Item>
+    </Form>
+    )
   }
- 
 }
+
+const mapStateToProps = (state) => ({
+  
+})
+
+const mapDispatchToProps = {
+  
+}
+
+
+const WrappedNormalLoginForm = Form.create({ name: 'normal_login' })(signIn);
+export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm)
+
