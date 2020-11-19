@@ -22,6 +22,8 @@ instance.interceptors.request.use(
     if (process.env.NODE_ENV == 'production') {
       config.url = baseURLStr + config.url.split('api/')[1];
       config.headers['Content-Type'] ='application/json;charset=UTF-8'
+    }else{
+      config.headers['Content-Type'] ='application/json;charset=UTF-8'
     }
     // if(config.url)
     // if (store.state.token || Cookie.getAttribute('token')){

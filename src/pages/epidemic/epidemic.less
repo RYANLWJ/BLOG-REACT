@@ -1,0 +1,74 @@
+#Epidemic {
+  .top-header{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 1rem;
+    font-size: 17px;
+    
+  }
+  .am-accordion-header {
+    background-color: rgba(183, 183, 245, 0.288);
+    height: 100%;
+  }
+
+  .am-list-item {
+    padding-right: 15px;
+    background-color: rgba(183, 245, 202, 0.288);
+
+  }
+
+  .am-list-content {
+    padding: 0;
+    height: 100%;
+  }
+
+  .header {
+    height: 1rem;
+  }
+
+  .header,
+  .province-header,
+  .city-header {
+    font-size: 17px;
+    display: flex;
+    background-color: rgba(183, 183, 245, 0.288);
+    align-items: center;
+    .item {
+      height: 100%;
+      flex: 1;
+      border-right: dashed 1px rgb(196, 192, 192);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .city-header {
+      height: 100%;
+    }
+
+    .item:nth-child(1) {
+      flex: 2;
+      
+      background-color: rgb(244, 245, 169);
+
+    }
+
+    .item:nth-child(2) {
+
+      background-color: rgba(86, 78, 197, 0.288);
+    }
+
+    .item:nth-child(3) {
+
+      background-color: rgba(78, 197, 104, 0.288);
+    }
+
+    .item:nth-child(4) {
+      border: none;
+      background-color: rgba(112, 112, 112, 0.288);
+
+    }
+  }
+}

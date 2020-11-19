@@ -1,19 +1,31 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import * as actions from "../../redux/actions/repo";
-import "./repo.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
+import * as actions from '../../redux/actions/repo';
+import './repo.scss';
 
 class Repo extends Component {
-
-
   render() {
     return (
-      <div id="repo">
+      <WingBlank size="lg">
+        <WhiteSpace size="lg" />
         {this.props.list.map(item => (
-          <div className="text">{item.id}</div>
+          <Card className="mb-20">
+            <Card.Header
+              title={item.id}
+              thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+              extra={<span>this is extra</span>}
+            />
+            <Card.Body>
+              <div>This is content of `Card`</div>
+            </Card.Body>
+            <Card.Footer content="footer content" extra={<div>extra footer content</div>} />
+          </Card>
         ))}
-      </div>
+
+        <WhiteSpace size="lg" />
+      </WingBlank>
     );
   }
 

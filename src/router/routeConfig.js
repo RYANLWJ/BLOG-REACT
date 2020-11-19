@@ -1,13 +1,14 @@
 import  Home  from "../pages/home/home";
 import repo from "../pages/repo/repo";
 import signIn from "../pages/signIn/signIn";
+import epidemic from "../pages/epidemic/epidemic";
 
 
 const routes = [
   {
     path: "/",
     exact: true,
-    component: Home
+    component: epidemic
   },
   {
     path: "/home",
@@ -23,7 +24,12 @@ const routes = [
     path: "/signIn",
     component: signIn,
     
-  }
+  },
+  {
+    path: "/epidemic",
+    component: epidemic,
+    
+  },
 ];
 
 export default routes;
